@@ -1,0 +1,92 @@
+1. servletConfig and servletContext are used for providing initializations for the servlets.
+2. 
+<context-param>
+		<param-name>Name</param-name>
+		<param-value>Mohit</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>Phone</param-name>
+		<param-value>BlackBerry</param-value>
+	</context-param>
+	
+
+3. 
+package com.deepanshu;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+public class MyServlet extends HttpServlet{
+	
+	public void service(HttpServletRequest req, HttpServletResponse res) throws IOException {
+		System.out.println("hell");
+		//res.setContentType("text/html");
+		PrintWriter out = res.getWriter();
+		out.println("Hi<br/>");
+		ServletContext ctx = getServletContext();
+		String str = ctx.getInitParameter("Name");
+		String anotherstr = ctx.getInitParameter("Phone");
+		out.println(str+" "+anotherstr);
+	}
+
+}
+
+Servlet can be run directly, as normal html page, via server
+
+4. Issue: <context-param></context-param>
+   This is general and can be used by any servlet. What if we want to have values specific to certain servlets?
+5. <servlet>
+		<servlet-name>MyServlet</servlet-name>
+		<servlet-class>com.deepanshu.MyServlet</servlet-class>
+		<init-param>
+			<param-name>Name</param-name>
+			<param-value>Mohit</param-value>
+		</init-param>
+   </servlet>
+
+   <servlet-mapping>
+		<servlet-name>MyServlet</servlet-name>
+		<url-pattern>/MyServlet</url-pattern>
+   </servlet-mapping>
+
+6. Note: whenever the values are common, use servlet context. otherwise use servletconfig
+
+package com.deepanshu;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+public class MyServlet extends HttpServlet{
+	
+	public void service(HttpServletRequest req, HttpServletResponse res) throws IOException {
+		System.out.println("hell");
+		//res.setContentType("text/html");
+		PrintWriter out = res.getWriter();
+		out.println("Hi<br/>");
+		ServletContext ctx = getServletContext();
+		String str = ctx.getInitParameter("Name");
+		String anotherstr = ctx.getInitParameter("Phone");
+		out.println(str+" "+anotherstr);
+		ServletConfig cg = getServletConfig();
+		String internalName = cg.getInitParameter("Name");
+		out.println(internalName);
+	}
+	
+
+}
+
+

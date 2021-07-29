@@ -1,0 +1,6 @@
+1. Servlet and server are two terms, that can be used interchangeably.
+2. HttpServerRequest & HttpServerRespons interfaces obects are used for what purpose?
+3. Whenever the client wants to interact with the server, the client sends values, eg: fills a form and submits it.
+4. These values are encapsulated within an object of HttpServerRequest interface.
+5. Anything that the server wants to respond with, it can be encapsulated within an object of HttpServletResponse interface.
+6. Response can be of any type: String, html, video format etc. Even JSON can be returned , if we talk about Web Services.

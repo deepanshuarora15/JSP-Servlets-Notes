@@ -1,0 +1,32 @@
+1. Within JSP directives, we have 3 different things: 
+   a. @page
+   b. @include
+   c. @taglib
+
+2. @page used for 
+   a. imports
+   b. Exception handling
+
+3. @taglib
+   Eg: when we use Srping framework, @taglib comes into picture. HTML tags are default tags. Any tags that you want to use,
+       apart from HTML tags, need to be added to @taglib
+4. <%@ page attributes %>
+   Attributes list contains:
+   a. language = "scripting language"  // by defualt it's java
+   b. extends = "className"
+   c. import = "comma separated importList"
+   d. session = "true | false"  // set true if you want to have session management
+   e. autoFlush = "true | false" // If we have buffer in place, and we want to be able to receive data after buffer is full. Set true
+   f. contentType = "ctinfo" // what are we gonna return to client? Html / pdf/image etc.
+   g. errorPage = "error_url" 
+   h. isErrorPage = "true | false"
+   i. info  = "information"
+   j. isELIgnored = "true | false" // EL means expression language
+   k. isThreadSafe = "true | false" 
+
+5. it's not a good practice to use SQL queries inside JSP page.
+
+6. import attribute , you can use as many times as you'd like. All other attributes can be defined only once.
+7. <%@ include file  "header.jsp" %>
+8. @Taglib
+	<%@ taglib uri="uri" prefix="fx" %>

@@ -1,0 +1,21 @@
+1. The implic classes objects ready to use in JSP are mentioned below:
+
+a. PageContext pageContext
+b. HttpSession session
+c. ServletContext application
+d. ServletConfig config
+e. JspWriter out
+f. Object page
+g. JspWriter _jspx_out
+h. PageContext _jspx_page_context
+
+2.In Netbeans, whatever you write in JSP, can be seen in Servlet form as well.
+
+3. Anything that is written inside 
+   <% %> becomes  a part of the service() method call in equiavalent servlet
+
+4. But 
+   <%
+    int i = 9;
+   %>
+   this does not become a part of the declaration in servlet. This also goes inside the service() method call. 

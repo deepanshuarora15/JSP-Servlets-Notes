@@ -1,0 +1,12 @@
+1. list of built in objects, that can be used directly inside JSP, without initializating or declaring.
+   a. request : HttpServletRequest
+   b. response : HttpServletResponse
+   c. pageContext : PageContext
+   d. out : PrintWriter
+   e. session : HttpSession
+   f. application : ServletContext
+   g. config : ServletConfig
+
+2. We have covered all the above except pageContext
+3. <% pageContext.setAttribute("name", "Navin"); %>
+4. Scope: limited to page itself. For pageContext, as is suggested by its name

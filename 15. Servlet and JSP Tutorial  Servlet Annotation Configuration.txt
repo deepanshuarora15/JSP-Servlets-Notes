@@ -1,0 +1,4 @@
+1. Problem with web descriptor i.e. web.xml file is that it is clumsy and difficutl to maintain.  Not to forget - slow
+2. Solution: Annotations
+@WebServlet("/add")
+is added to the top of AddServlet java class.

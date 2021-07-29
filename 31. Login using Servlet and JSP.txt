@@ -1,0 +1,13 @@
+1. Http is stateless protocol. So login credentials management is the responsibility of the developer.
+2. We use session management for this.
+3. Cookies can also be used. But cookies get stored on client side. So we prefer Sessions instead.
+4. Cookies are better for e-commerce modules.
+5. If there is a login page and welcome page:
+   websitename/login.jsp
+   websitename/welcome.jsp
+6. If we directly open the welcome page and session says that person has not logged in,
+   then we will redirect the person to login page. Else we will allow him on welcome page.
+7. We don't store the password in Session, just the username we store. 
+8. On logout button click, we remove the username attribute from the session and redirect back to login page.
+9. Note: we need to remove the back button functionality, to prevent pages from getting opened after log out. 
+   We can do that by remvoing cached files from the browser.

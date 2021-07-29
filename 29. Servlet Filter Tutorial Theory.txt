@@ -1,0 +1,8 @@
+1. We can have filters for:
+   a. log
+   b. Transaction
+   c. Security
+2. Most of these filters are common for most servlets and hence it is better to separate them out. This wy, if we add new servlets in
+   future, we can just plug them in, without making any changes in filters.
+3. Filters are independent of each other and are invisible to each other.
+4. All these filters need to be added to web.xml file.

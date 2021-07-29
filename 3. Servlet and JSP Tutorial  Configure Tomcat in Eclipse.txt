@@ -1,0 +1,5 @@
+1. Change the http port for your Tomcat server, in case of clashes.
+2. If the server is stopped and you visit localhost:portnumber, then nothing would work.
+   If the server is started, you would half built blue screen. This means web server is working fine now.
+   You can now begin with your development effort.
+3. Port is by default 8080. If you see clashes, change the port number.

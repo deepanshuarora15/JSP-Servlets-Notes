@@ -1,0 +1,23 @@
+1. 4 things together make a JSP page:
+   a. Declaration
+   b. Directive
+   c. Scriptlet
+   d. Expression
+
+2. To separate the declaration, we write the following syntax:
+   
+<%!
+	int i = 3;
+%>
+
+3. For adding import statements, we add directives:
+
+
+<%@page import="java.util.Scanner"
+%>
+
+4. Print out.println(k) can be replaced via
+   <%= k %>
+
+
+

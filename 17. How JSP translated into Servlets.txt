@@ -1,0 +1,16 @@
+1. In servlets, we had to define the service() method. had to define objects for HttpServletResponse and HttpServletRequest interface.
+2. So why do we even learn servlet? Why not learn JSP directly?
+3. Reason: Tomcat does not understand JSP. Itacts as a container to run servlets only. Whatever JSP code you write,
+   that gets converted to servlets internally.
+4. In JSP, we do not make objects for sessions and cookies too. Everything is there in terms of implicit objects, already
+   available for our usage
+5. <% %> is known as scriplet.
+6. Declaration tag
+   <%!
+   int value = 1; // here we do declarations
+   %>
+7. Directive Tags
+   <%@page
+   // Here we import packages
+   %>
+8. <%=k%> //  Expression tag equiavalent to out.println(); 

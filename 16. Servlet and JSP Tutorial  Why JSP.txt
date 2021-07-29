@@ -1,0 +1,44 @@
+1. PrintWriter out = res.getWriter();
+   out.println("<html><body>");
+2. This is problematic to format and configure. When the code grows big, it becomes an issue to track things like where did you 
+   miss the closing tag.
+3. Here HTML is bound within Java code, which is not good.
+4. Java came up with a solution known as JSP. Here we have reverse situation. We have HTML pages and throw Java in there.
+5. JSP can do everything, that you have been doing till now using Servlets.
+6. 
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Sample JSP</title>
+</head>
+<body>
+	Hello World
+	<form action="Add.jsp" method="post">
+		Enter 1st number : <input type="text" name="num1"/><br/>
+		Enter 2nd number : <input type="text" name="num2"/><br/>
+		<input type="submit"/>
+	</form>
+</body>
+</html>
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body bgcolor="cyan">
+<% 
+	int i = Integer.parseInt(request.getParameter("num1"));
+	int j = Integer.parseInt(request.getParameter("num2"));
+	int k = i + j;
+	out.println("Output is "+k);
+%>
+</body>
+</html>
+
+7. Imp: The best advantage here is that, neither did we have to do XML configuration or Web annotations. We just defined 
+   JSP here and tada, just added form action = "Add.jsp". That's it

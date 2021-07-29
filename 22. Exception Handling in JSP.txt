@@ -1,0 +1,73 @@
+1. <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+hell
+<% 
+	try{
+	int i = 10/0;
+	}
+	catch(Exception e){
+		out.println(e.getMessage());
+	}
+
+%>
+</body>
+</html>
+
+2. But the above is not suggested. usually when there's an error, we show the user a dedicated error page where we show what 
+   exactly went wrong.
+3. hence we create a new error.jsp and if error occurs in Home.jsp, then error.jsp should be called.
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1" errorPage="error.jsp;" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+hell
+<% 
+	int i = 10/0;
+%>
+</body>
+</html>
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<%
+	out.println("Error aa gaya hai");
+	%>
+</body>
+</html>
+
+
+4. An even better way is to define error.jsp as error page in @page.
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1" isErrorPage="true" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body bgcolor="red">
+Error
+	<%= exception.getMessage() %> 
+</body>
+</html>

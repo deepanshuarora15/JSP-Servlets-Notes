@@ -1,0 +1,9 @@
+1. Controller is implemented with help of servlets.
+2. Models via POJOs
+3. View via JSPs
+4. Imp: In sendRedirect(), we have to enter data into session. We cannot forward data.
+   In case of RequestDispatcher, we can forward the data to another page.
+5. In case of sendRedirect(), there are 2 requests. One from client to s1, and then response from s1 to browser and then request from 
+   browser to s2. Both visible to client.
+   In case of RequestDispatcher, there's one request from browser to s1. Internal rerouting from s1 to s2 does not count as 
+   as a separate request.

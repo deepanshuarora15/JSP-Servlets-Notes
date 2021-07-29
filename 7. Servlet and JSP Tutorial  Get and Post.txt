@@ -1,0 +1,23 @@
+1. Till now whatever we have used is HTTP protocol based.
+2. There are 5 requests possible in Http:
+   a. Get
+   b. Post
+   c. Put
+   d. Delete
+   e. Options
+3. Apart from action attribute in form tag, we also have another attribute called as method.
+   Default value for method is get
+4. <form action ="add" method="get">
+   </form>
+
+
+5. Problem: When we use the get protocol, everything gets passed inside the query string and is visible in the address bar.
+6. Solution: change the method to "post". Now URL won't contain the arguements and your submitted data would be safe
+7. When to use get and when to use post?
+   a. Get: When you want to fetch data from the server
+   b. post: When you want to post data to the server. Eg: entering username and password for login	
+8. Drawback of this method: using inspect element, user can change your post method in the form tag to get method.
+   Solution: Till now we have been using public void service() method inside the servlet.
+9. There are 2 more methods:
+   a. doPost : exact same signature as service(). Just rename the method to doPost()
+   b. doGet: exact same signature as service(). Just rename the method to doPost()

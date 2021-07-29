@@ -1,0 +1,13 @@
+1. RequestDispatcher is an interface , so we cannot make its objects directly.
+2. RequestDispatcher rd =
+   rd.forward(req, res);
+3. When request is forwarded from S1 to S2, then client does not even know. In clients address bar, the URL is there for s1 
+   only. 
+4. Imp: The above scenario works OK, when both s1 and s2 belong to the same web-app. In case, they do not belong to the same web-app,
+   then the opacity is harmful.
+   Eg: s1 belongs to your web app. S2 belongs to paytm gateway. If the user is paying via s1 and the request is being routed to s2,
+   the client should transparently see, what's happening.
+5. Above is the scenario where RequestDispatcher should not be reused. instead, there's another tech thing that should be used and that's
+   called sendRedirect().
+6. sendRedirect() mostly requires the use of SessionManagement(). This is because, we need to pass values from s1 to s2 and that cannot be
+   done directly without maintaining sessions now.

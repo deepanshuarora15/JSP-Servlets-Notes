@@ -1,0 +1,76 @@
+1. Can two servets communicate with each other?
+   Ans: Yes, a servlet can call other servlets
+2. There are 2 ways that one servlet can call another servlet
+   a. RequestDispatcher
+   b. Redirect
+3. RequestDispatcher rd = req.getRequestDispatcher("sq");
+   rd.forward(req, res);
+
+   But sq name is not defined yet? So we add the servelt config in web.xml file to handle the mappings.
+	<servlet>
+		<servlet-name>squareservlet</servlet-name>
+		<servlet-class>com.deepanshu.SqServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>squareservlet</servlet-name>
+		<url-pattern>/sq</url-pattern>
+	</servlet-mapping>
+
+
+   Now we define the SqServlet class, the same way define any servlet.
+
+4. Before sending the req object of HttpServletRequest class from one servlet to another, we can add attributes to it.
+   req.setAttribute("k"	,k) ; (String, Object) is the argument type
+
+5. package com.deepanshu;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest; 
+import javax.servlet.http.HttpServletResponse;
+
+
+// public void service is a method tht accepts user requests. 
+
+public class AddServlet extends HttpServlet{
+	
+	public void service(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
+		int i = Integer.parseInt(req.getParameter("num1")); // because everything received from  HTML is by default in String format
+		int j = Integer.parseInt(req.getParameter("num2"));
+		int k = i+j;
+		//System.out.println(k);
+		PrintWriter out = res.getWriter();
+		out.println("result is "+k);
+		req.setAttribute("k"	,k);
+		RequestDispatcher rd = req.getRequestDispatcher("sq");
+		rd.forward(req, res);
+	}
+}
+
+
+
+package com.deepanshu;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class SqServlet extends HttpServlet{
+	
+	public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
+		int k;
+		k = (int)req.getAttribute("k");
+		PrintWriter out = res.getWriter();
+		out.println("Hello from square servlet " + k*k);
+	}
+}
+
+

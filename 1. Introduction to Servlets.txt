@@ -1,0 +1,17 @@
+1. 2 ways web apps can work:
+   a. Client can send a request, we can have a static page like index.html on the server. 
+   b. Or it's possible that for a client request, we do not have any static page already available and we might have
+      to build it on the go. Servlets come into picture then. Helper Application also known as web container helps here. 
+      Example of web container: Apache Tomcat, IBM websphere, glassfish.
+2. We have file known as Deployment Descriptor i.e. web.xml that defines that for what request, what servlet should be called?
+   Eg: abc.html may be mapped to a servlet known as AddServlet.
+3. Every request is mapped to a single servlet. 1-1 mapping
+4. Remember, the request is directly responded with an html file from the server, if the file required is static. If however,
+   the static page is not available and things need to be built on the go, then the server takes help from Web Containers.
+4. Inside the web.xml file:
+   a. In servlet name we need to add servlet name
+   b. also we need to add its mapping
+5. Servlets cannot be normal POJOs. They are special classes, that extends from HttpServlet class. Servlets accept a request and 
+   replies in HTML form. XML or JSON can also be replied.
+6. Tip: If you want to avoid writing XML, you can use annotations instead. Mapping can be done via annotations.
+

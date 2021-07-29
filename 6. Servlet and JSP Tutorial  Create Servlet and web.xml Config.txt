@@ -1,0 +1,20 @@
+1. Web.xml is the deployment descriptor.
+2. We need to add tags
+   
+<servlet>
+	<servlet-name>abc</servlet-name>
+	<servlet-class>com.packagename.AddServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>abc</servlet-name>
+	<url-pattern>/add</url-pattern>
+</servlet-mapping>
+
+
+* Focus on / in add. Without / it won't work
+3. The above tags need to be created for each and every servlet.
+4. Also the servlet name should be the same in both the tags.
+5. url pattern is what you see in query string
+   <form action ="add"> Remember, this way we bind HTML to servlet.
+

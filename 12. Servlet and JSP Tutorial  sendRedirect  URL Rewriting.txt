@@ -1,0 +1,56 @@
+1. In sendRedirect(), we do not need to make an object of RequestDispatcher interface anymore. So no more forward() 
+   method calls between servlets required.
+2. sendRedirect() is a method of HttpServletResponse interface.
+3. There are 3 ways, you can pass data from one servlet to another 
+   a. URL Rewriting
+   b. Sessions
+   c. Cookies
+4. Using Url Reqriting, we use s1 and add res.sendRedirect() method and add params to it like k=5.
+   On s2, we then do 
+   int k = Integer.parseInt(req.getparameter("k"));
+
+package com.deepanshu;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class SubtractServlet extends HttpServlet{
+	public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
+		
+		int i = Integer.parseInt(req.getParameter("num1"));  
+		int j = Integer.parseInt(req.getParameter("num2"));
+		int k = i-j;
+		//System.out.println(k);
+		PrintWriter out = res.getWriter();
+		out.println("result of subtraction is "+k);
+		res.sendRedirect("subserve?k="+k);   // Points to subservlet
+		//req.setAttribute("k"	,k);
+//		RequestDispatcher rd = req.getRequestDispatcher("sq");
+//		rd.forward(req, res);
+		
+	}
+}
+
+
+package com.deepanshu;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class SubServlet extends HttpServlet {
+public void service(HttpServletRequest req, HttpServletResponse res) throws IOException {
+		int k = Integer.parseInt(req.getParameter("k"));
+		System.out.println("Hey there "+k);
+		
+	}
+}
+

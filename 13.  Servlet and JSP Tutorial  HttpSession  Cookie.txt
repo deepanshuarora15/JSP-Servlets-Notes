@@ -1,0 +1,108 @@
+1. As discusse, redirection can take your data from s1 to s2 in many ways:
+   a. Cookies
+   b. Session Storage
+   c. URL rewrite
+2. Session is maintained by Tomcat for us. Better than doing URL rewrite, it's better to use Sessions. 
+
+package com.deepanshu;
+
+import java.io.IOException;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+public class Multiply extends HttpServlet{
+	
+	public void service(HttpServletRequest req, HttpServletResponse res) throws IOException {
+		int i = Integer.parseInt(req.getParameter("num1"));
+		int j = Integer.parseInt(req.getParameter("num2"));
+		int k = i * j;
+		HttpSession session = req.getSession();
+		session.setAttribute("k", k);
+		res.sendRedirect("mul");
+	}
+
+}
+
+
+
+package com.deepanshu;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+public class Mul extends HttpServlet{
+	
+	public void service(HttpServletRequest req, HttpServletResponse res) throws IOException {
+		HttpSession session = req.getSession();
+		int k = (int)session.getAttribute("k");
+		PrintWriter out = res.getWriter();
+		out.println("Result is "+ k);
+	}
+
+}
+
+
+3. Apart from sessions, we can also use cookies. Mechanism: Request goes from client to s1. s1 responds with a cookie.
+   client gets the cookie and then hits s2 to get the final result.
+4. Cookie is a class and can be isntantiated using new keyword
+
+package com.deepanshu;
+
+import java.io.IOException;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+public class Division extends HttpServlet{
+	
+	public void service(HttpServletRequest req, HttpServletResponse res) throws IOException {
+		int i = Integer.parseInt(req.getParameter("num1"));
+		int j = Integer.parseInt(req.getParameter("num2"));
+		int k = i / j;
+		Cookie cookie = new Cookie("k",String.valueOf(k));
+		res.addCookie(cookie);
+		res.sendRedirect("Div");
+	}
+
+}
+
+
+
+package com.deepanshu;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import javax.servlet.http.Cookie;
+
+public class Div extends HttpServlet {
+
+	public void service(HttpServletRequest req, HttpServletResponse res) throws IOException {
+		int k = 0;
+		Cookie[] cookies = req.getCookies();
+		for (Cookie c : cookies) {
+			if (c.getName().equals("k"))
+				k = Integer.parseInt(c.getValue());
+		}
+		PrintWriter out = res.getWriter();
+		out.println("Result is " + k);
+	}
+
+}
+

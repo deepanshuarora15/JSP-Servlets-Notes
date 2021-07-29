@@ -1,0 +1,15 @@
+1. Servlet works faster than JSP.
+2. But JSP are faster to write by programmer.
+3. Jsp are slow for the first time, because they need to converted to corresponding Servlet
+4. Also it is not a good practice to write your business logic inside JSP. Only View should be there in JSP.
+5. MVC pattern:
+   a. Client interacts with the app and pushes a request to controller.
+   b. Controller calls the Model and pushes a model object to View.
+   c. View takes whatever it requires to show from the Model.
+   d. Voew gets returned to the client.
+6. Models are nothing but POJOs.
+7. All business logic is written inside controller. All processing that needs to be done, is done by the controller.
+
+8. Apart from MVC nothing is required theoretically, but practically.
+   Controller has to be connected with Service and Service inturn needs to be connected with DAO. DAO gets connected to database then,
+   via the help of jdbc.

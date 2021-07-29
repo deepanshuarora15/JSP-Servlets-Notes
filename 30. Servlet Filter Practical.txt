@@ -1,0 +1,7 @@
+1. practical: a user form that takes name and id for registration.
+2. What if user enters a negative id? Ans: There are 2 ways we can handle that:
+   a. inside the Servlet
+   b. Use filters: Preferred and recommended.
+3. Filter is an interface that belongs to Servlet API
+4. Once a filter is called, it calls the rest of the filter chain. Once all the filters are done and dusted,
+   then the servlet is called.
